@@ -1,0 +1,66 @@
+<section>
+  <div class="container">
+    <div class="row" style="margin-top: 5%;">
+      <div class="col-md-12" style="text-align: center; margin: 5%;">
+        <h2>My Articles</h2>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-4 shadow-sm">
+          <form #myform="ngForm" (ngSubmit)="addArticle(myform)">
+            <div class="form-group">
+              <label for="name">Article Id</label>
+              <input
+                type="text"
+                class="form-control"
+                ngModel
+                name="id"
+                id="id"
+                aria-describedby="identity"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input
+                type="text"
+                class="form-control"
+                ngModel
+                name="title"
+                id="title"
+                aria-describedby="title"
+              />
+            </div>
+            <div class="form-group">
+              <label for="author">Author</label>
+              <input
+                type="text"
+                class="form-control"
+                ngModel
+                name="author"
+                id="author"
+              />
+            </div>
+            <div class="form-group">
+              <label for="publisher">Publisher</label>
+              <input
+                type="text"
+                class="form-control"
+                ngModel
+                name="publisher"
+                id="publisher"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-primary" *ngFor="let article of articles$ | async">
+            {{article.title}} by <b>{{article.author}}</b>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
