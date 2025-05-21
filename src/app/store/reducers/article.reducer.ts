@@ -1,8 +1,8 @@
-// import the interface
+import { createReducer, on } from '@ngrx/store';
+import { addArticle } from '../actions/article.actions';
 import { Article } from '../models/article.model';
-import { ArticleAction, ArticleActionType } from '../actions/article.actions';
-//create a dummy initial state
-const initialState: Array<Article> = [
+
+export const initialState: ReadonlyArray<Article> = [
   {
     id: '1',
     title: 'Angular State Management with NgRx',
@@ -10,14 +10,8 @@ const initialState: Array<Article> = [
     publisher: 'SyncFusion',
   },
 ];
-export function ArticleReducer(
-  state: Array<Article> = initialState,
-  action: ArticleAction
-) {
-  switch (action.type) {
-    case ArticleActionType.ADD_ITEM:
-      return [...state, action.payload];
-    default:
-      return state;
-  }
-}
+
+export const articleReducer = createReducer(
+  initialState,
+  on(addArticle, (state, { article }) => [...state, article])
+);

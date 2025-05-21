@@ -6,16 +6,14 @@
       </div>
       <div class="col-md-6">
         <div class="card p-4 shadow-sm">
-          <form #myform="ngForm" (ngSubmit)="addArticle(myform)">
+          <form [formGroup]="articleForm" (ngSubmit)="addArticle()">
             <div class="form-group">
-              <label for="name">Article Id</label>
+              <label for="id">Article Id</label>
               <input
                 type="text"
                 class="form-control"
-                ngModel
-                name="id"
+                formControlName="id"
                 id="id"
-                aria-describedby="identity"
                 required
               />
             </div>
@@ -24,10 +22,8 @@
               <input
                 type="text"
                 class="form-control"
-                ngModel
-                name="title"
+                formControlName="title"
                 id="title"
-                aria-describedby="title"
               />
             </div>
             <div class="form-group">
@@ -35,8 +31,7 @@
               <input
                 type="text"
                 class="form-control"
-                ngModel
-                name="author"
+                formControlName="author"
                 id="author"
               />
             </div>
@@ -45,8 +40,7 @@
               <input
                 type="text"
                 class="form-control"
-                ngModel
-                name="publisher"
+                formControlName="publisher"
                 id="publisher"
               />
             </div>
