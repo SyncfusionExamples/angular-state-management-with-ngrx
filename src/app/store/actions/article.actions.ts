@@ -1,15 +1,7 @@
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { Article } from '../models/article.model';
 
-export enum ArticleActionType {
-  ADD_ITEM = '[ARTICLE] Add ARTICLE',
-}
-
-export class AddArticleAction implements Action {
-
-  readonly type = ArticleActionType.ADD_ITEM;
-  constructor(public payload: Article) {}
-
-}
-
-export type ArticleAction = AddArticleAction;
+export const addArticle = createAction(
+  '[ARTICLE] Add ARTICLE',
+  props<{ article: Article }>()
+);
